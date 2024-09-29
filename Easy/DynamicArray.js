@@ -1,5 +1,5 @@
 class DynamicArray {
-    /*
+    /**
      * @constructor
      * @param {number} capacity
      */
@@ -7,7 +7,7 @@ class DynamicArray {
         this.arr = new Array(capacity);
     }
 
-    /*
+    /**
      * @param {number} i
      * @returns {number}
      */
@@ -15,7 +15,7 @@ class DynamicArray {
         return this.arr[i];
     }
 
-    /*
+    /**
      * @param {number} i
      * @param {number} n
      * @returns {void}
@@ -24,7 +24,7 @@ class DynamicArray {
         this.arr[i] = n;
     }
 
-     /*
+    /**
      * @param {number} n
      * @returns {void}
      */
@@ -32,7 +32,7 @@ class DynamicArray {
         let inserted = false;
         if (this.getSize() == this.getCapacity()) {
             this.arr[this.arr.length] = n;
-            return null;
+            inserted = true;
         }
         for (let counter = this.arr.length; counter >= 0; counter--) {
             if (this.arr[counter] !== undefined) {
@@ -44,21 +44,21 @@ class DynamicArray {
                     inserted = true;
                 }
             }
-            if (inserted == false) {
+            if (!inserted) {
                     this.arr[0] = n;
                     return null;
             }
         }
     }
 
-    /*
+    /**
      * @returns {number}
      */
     popback() {
-        for (let counter = this.arr.length - 1; counter >= 0; counter--) {
+        for (let counter = this.arr.length; counter >= 0; counter--) {
             if (this.arr[counter] !== undefined) {
-                let lastElement = this.arr[counter + 1];
-                this.arr[counter + 1] = undefined;
+                let lastElement = this.arr[counter];
+                delete this.arr[counter];
                 return lastElement;
             } else if (counter == 0){
                 let lastElement = this.arr[this.arr.length - 1];
@@ -66,9 +66,10 @@ class DynamicArray {
                 return lastElement;
             }
         }
+        return 99;
     }
 
-    /*
+    /**
      * @returns {void}
      */
     resize() {
@@ -99,7 +100,7 @@ class DynamicArray {
         return elements;
     }
 
-    /*
+    /**
      * @returns {number}
      */
     getCapacity() {
