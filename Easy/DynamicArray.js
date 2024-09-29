@@ -37,10 +37,10 @@ class DynamicArray {
             if (this.arr[counter] !== undefined) {
                 if (counter == this.arr.length - 1) {
                     this.arr[this.arr.length] = n;
-                    return null;
+                    break;
                 } else{
                     this.arr[counter + 1] = n;
-                    return null;
+                    break;
                 }
             }
         }
