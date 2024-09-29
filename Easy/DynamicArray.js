@@ -1,5 +1,5 @@
 class DynamicArray {
-    /**
+    /*
      * @constructor
      * @param {number} capacity
      */
@@ -7,7 +7,7 @@ class DynamicArray {
         this.arr = new Array(capacity);
     }
 
-    /**
+    /*
      * @param {number} i
      * @returns {number}
      */
@@ -15,7 +15,7 @@ class DynamicArray {
         return this.arr[i];
     }
 
-    /**
+    /*
      * @param {number} i
      * @param {number} n
      * @returns {void}
@@ -24,7 +24,7 @@ class DynamicArray {
         this.arr[i] = n;
     }
 
-    /**
+    /*
      * @param {number} n
      * @returns {void}
      */
@@ -51,7 +51,7 @@ class DynamicArray {
         }
     }
 
-    /**
+    /*
      * @returns {number}
      */
     popback() {
@@ -69,7 +69,7 @@ class DynamicArray {
         return 99;
     }
 
-    /**
+    /*
      * @returns {void}
      */
     resize() {
@@ -100,7 +100,7 @@ class DynamicArray {
         return elements;
     }
 
-    /**
+    /*
      * @returns {number}
      */
     getCapacity() {
@@ -114,3 +114,5 @@ class DynamicArray {
         return capacity;
     }
 }
+
+export { DynamicArray };
