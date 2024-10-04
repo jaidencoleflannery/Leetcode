@@ -1,118 +1,53 @@
 class DynamicArray {
-    /*
-     * @constructor
-     * @param {number} capacity
-     */
+    
     constructor(capacity) {
         this.arr = new Array(capacity);
+        this.capacity = capacity;
+        this.size = 0;
     }
-
-    /*
-     * @param {number} i
-     * @returns {number}
-     */
+    
     get(i) {
         return this.arr[i];
     }
 
-    /*
-     * @param {number} i
-     * @param {number} n
-     * @returns {void}
-     */
+    
     set(i, n) {
         this.arr[i] = n;
     }
 
-    /*
-     * @param {number} n
-     * @returns {void}
-     */
+    
     pushback(n) {
-        let inserted = false;
-        if (this.getSize() == this.getCapacity()) {
-            this.arr[this.arr.length] = n;
-            inserted = true;
+        if(this.size == this.capacity){
+            this.resize();
         }
-        for (let counter = this.arr.length; counter >= 0; counter--) {
-            if (this.arr[counter] !== undefined) {
-                if (counter == this.arr.length - 1) {
-                    this.arr[this.arr.length] = n;
-                    inserted = true;
-                } else{
-                    this.arr[counter + 1] = n;
-                    inserted = true;
-                }
-            }
-            if (!inserted) {
-                    this.arr[0] = n;
-                    return null;
-            }
-        }
+        this.arr[this.size] = n;
+        this.size += 1;
     }
 
-    /*
-     * @returns {number}
-     */
+    
     popback() {
-        for (let counter = this.arr.length; counter >= 0; counter--) {
-            if (this.arr[counter] !== undefined) {
-                let lastElement = this.arr[counter];
-                delete this.arr[counter];
-                return lastElement;
-            } else if (counter == 0){
-                let lastElement = this.arr[this.arr.length - 1];
-                this.arr[this.arr.length - 1] = undefined;
-                return lastElement;
-            }
-        }
-        return 99;
+        this.size -= 1;
+        return this.arr[this.size]
     }
 
-    /*
-     * @returns {void}
-     */
+    
     resize() {
-        let doubleArr = new Array(this.arr.length * 2);
+        this.capacity = (2 * this.capacity);
+        let newArr = new Array(this.capacity);
 
-        for(let count = 0; count < arr.length; count++){
-            doubleArr[count] = arr[count];
+        for(let i = 0; i < this.size; i++){
+            newArr[i] = this.arr[i];
         }
-        return doubleArr;
+        this.arr = newArr;
     }
 
-    /*
-     * @returns {number}
-     */
+    
     getSize() {
-        let elements = 0;
-
-        if (!this.arr) {
-            return 0;
-        }
-
-        for (let count = 0; count < this.arr.length; count++) {
-            if(this.arr[count] != undefined){
-                elements++;
-            }
-        }
-
-        return elements;
+        return this.size
     }
 
-    /*
-     * @returns {number}
-     */
+    
     getCapacity() {
-        let capacity = 0;
-
-        if(!this.arr){
-            return 0;
-        } else{
-            capacity = this.arr.length;
-        }
-        return capacity;
+        return this.capacity;
     }
 }
-
-export { DynamicArray };
