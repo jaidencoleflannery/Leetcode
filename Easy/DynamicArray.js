@@ -9,12 +9,10 @@ class DynamicArray {
     get(i) {
         return this.arr[i];
     }
-
     
     set(i, n) {
         this.arr[i] = n;
     }
-
     
     pushback(n) {
         if(this.size == this.capacity){
@@ -24,12 +22,10 @@ class DynamicArray {
         this.size += 1;
     }
 
-    
     popback() {
         this.size -= 1;
         return this.arr[this.size]
     }
-
     
     resize() {
         this.capacity = (2 * this.capacity);
@@ -41,12 +37,10 @@ class DynamicArray {
         this.arr = newArr;
     }
 
-    
     getSize() {
         return this.size
     }
 
-    
     getCapacity() {
         return this.capacity;
     }
