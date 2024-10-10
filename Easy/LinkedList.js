@@ -1,43 +1,71 @@
+class ListNode{
+    constructor(val, nextNode = null){
+        this.val = val;
+        this.next = nextNode;
+    }
+}
+
 class LinkedList {
     constructor() {
-        let linkedList = { head: {
-            value: null,
-            next: null
-        }}
-        let tail = this.head;
+        //dummy node
+        this.head = ListNode(-1);
+        this.tail = self.head;
     }
 
     get(index) {
-        let cursor = this.head;
-        while(cursor != index){
-            cursor = cursor.next;
+        current = this.head.next;
+        cursor = 0;
+        while(cursor != index && cursor != null){
+            current = current.next;
+            cursor += 1;
         }
-
-        return cursor;
+        if(cursor == index){
+            return current.val;
+        } else{
+            return -1; //out of bounds
+        }
     }
 
     insertHead(val) {
-        let cursor = { head: {
-            value: null,
-            next: null
-        }}
-            cursor.head = this.head;
-        while(cursor.next != null){
-            cursor.value = this.value;
+        node = ListNode(val);
+        node.next = this.head.next;
+        this.head.next = node;
+        //checking if list is empty
+        if(node.next == null){
+            this.tail = node;
         }
-        this.head.value = val;
     }
 
     insertTail(val) {
-        this.tail.value = val;
-        this.tail = this.next;
+        this.tail.next = ListNode(val);
+        this.tail = this.tail.next;
     }
 
     remove(index) {
-
+        cursor = 0;
+        current = self.head;
+        while(cursor < index && cursor != null){
+            cursor += 1;
+            current = current.next;
+        }
+        if(current){
+            if(current.next == this.tail){
+                this.tail = current;
+            }
+            current.next = current.next.next;
+            return true;
+        }
+        return false;
     }
 
     getValues() {
+        current = this.head.next;
+        results = [];
 
+        while(current){
+            results //append
+        }
+
+        return results;
     }
 }
